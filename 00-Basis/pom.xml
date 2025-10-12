@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>be.ucll.backend2</groupId>
-    <artifactId>backend-component-tests</artifactId>
+    <artifactId>security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Backend-Component-Tests</name>
-    <description>Backend-Component-Tests</description>
+    <name>Spring-Security</name>
+    <description>Spring-Security</description>
     <url/>
     <licenses>
         <license/>
