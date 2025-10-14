@@ -1,0 +1,1 @@
+INSERT INTO "user" (email_address, hashed_password) VALUES ('jos@example.com', '{noop}pass');
