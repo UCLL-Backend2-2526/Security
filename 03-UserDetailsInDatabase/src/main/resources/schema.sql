@@ -39,3 +39,6 @@ CREATE TABLE "user"
     hashed_password VARCHAR(255),
     CONSTRAINT pk_user PRIMARY KEY (id)
 );
+
+ALTER TABLE "user"
+    ADD CONSTRAINT uc_user_emailaddress UNIQUE (email_address);
