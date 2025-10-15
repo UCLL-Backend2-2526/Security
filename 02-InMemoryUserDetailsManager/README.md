@@ -39,11 +39,14 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         return new InMemoryUserDetailsManager(
                 // User biedt een "builder" aan om UserDetails te maken
-                User.withUsername("josb").password("josb123").build()
+                User.withUsername("josb").password("{noop}josb123").build()
         );
     }
 }
 ```
+
+Voorlopig gebruiken we in het wachtwoord `{noop}` om aan te geven dat het wachtwoord niet
+gehasht is. We gaan deze hashing in een latere stap toevoegen.
 
 ## Wat zien we nu?
 
