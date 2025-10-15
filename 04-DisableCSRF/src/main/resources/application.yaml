@@ -27,3 +27,7 @@ spring:
     init:
       # Gebruik altijd schema.sql
       mode: always
+logging:
+  level:
+    # Gebruik debug logging voor Spring Security
+    org.springframework.security: DEBUG
