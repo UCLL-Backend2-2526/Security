@@ -1,8 +1,10 @@
 package be.ucll.backend2.service;
 
-import be.ucll.backend2.controller.dto.CreateUserDto;
+import be.ucll.backend2.controller.dto.UserDto;
 import be.ucll.backend2.exception.EmailAddressNotUniqueException;
+import be.ucll.backend2.exception.UserNotFoundException;
 import be.ucll.backend2.model.User;
+import be.ucll.backend2.model.UserDetailsImpl;
 import be.ucll.backend2.repository.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,16 +21,32 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User registerUser(@RequestBody CreateUserDto createUserDto) throws EmailAddressNotUniqueException {
-        final var hashedPassword = passwordEncoder.encode(createUserDto.password());
+    public User getUser(long id) throws UserNotFoundException {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+    }
+
+    public User registerUser(@RequestBody UserDto userDto) throws EmailAddressNotUniqueException {
+        final var hashedPassword = passwordEncoder.encode(userDto.password());
         final var user = new User(
-                createUserDto.emailAddress(),
+                userDto.emailAddress(),
                 hashedPassword
         );
         try {
             return userRepository.save(user);
         } catch (DataIntegrityViolationException e) {
-            throw new EmailAddressNotUniqueException(createUserDto.emailAddress());
+            throw new EmailAddressNotUniqueException(userDto.emailAddress());
+        }
+    }
+
+    public User updateUser(long id, UserDto userDto) throws UserNotFoundException, EmailAddressNotUniqueException {
+        final var user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        user.setEmailAddress(userDto.emailAddress());
+        final var hashedPassword = passwordEncoder.encode(userDto.password());
+        user.setHashedPassword(hashedPassword);
+        try {
+            return userRepository.save(user);
+        } catch (DataIntegrityViolationException e) {
+            throw new EmailAddressNotUniqueException(userDto.emailAddress());
         }
     }
 }

@@ -12,5 +12,5 @@ en voegen we stap voor stap security toe.
 - [Stap 6: Role-Based Access Control](./06-RBAC): in deze stap gaan we gebruikers rollen toekennen en rechten toekennen op
   basis van rollen.
 - [Stap 7: Method Security]()
-- Rehash van wachtwoord gaat pas als we H2 console terug toegankelijk hebben gemaakt
 - Meer complexe authz (eigen wachtwoord aanpassen)
+- Rehash van wachtwoord gaat pas als we H2 console terug toegankelijk hebben gemaakt
