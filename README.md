@@ -7,5 +7,5 @@ en voegen we stap voor stap security toe.
 - [Stap 1: Enable Spring Security](./01-EnableSpringSecurity): in deze stap schakelen we Spring Security in en kijken we naar wat er allemaal veranderd is.
 - [Stap 2: InMemoryUserDetailsManager](./02-InMemoryUserDetailsManager): in deze stap voegen we onze eigen gebruikers toe (in-memory).
 - [Stap 3: UserDetails in database opslaan](./03-UserDetailsInDatabase): in deze stap slaan we onze gebruikers op in de database.
-- [Stap 4: Registratie](./04-Registratie): in deze stap gaan we gebruikers zich laten registeren.
+- [Stap 4: SecurityFilterChain](./04-SecurityFilterChain): in deze stap zorgen we ervoor dat `POST`, `PUT` en `DELETE` requests terug werken.
 - ...

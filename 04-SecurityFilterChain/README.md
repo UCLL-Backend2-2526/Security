@@ -1,4 +1,4 @@
-# CSRF tokens uitschakelen
+# `SecurityFilterChain`
 
 ## Wat gaan we doen?
 
@@ -104,7 +104,10 @@ Probeer zelf ook eens om `authorizeHttpRequests(...)` weg te laten. Wat merk je 
 
 ## Conclusies
 
-...
+- We kunnen per Java package andere logging levels instellen om beter te kunnen zien wat er gebeurt.
+- Spring Security werkt op basis van een keten van filters (een `SecurityFilterChain`) om requests te
+  onderscheppen, te controleren en aan te passen.
+- CSRF tokens kunnen uitgeschakeld worden met een custom `SecurityFilterChain`
 
 ## Volgende stappen
 
