@@ -11,6 +11,9 @@ en voegen we stap voor stap security toe.
 - [Stap 5: Registratie](./05-Registratie): in deze stap gaan we het mogelijk maken voor users om zich te registreren.
 - [Stap 6: Role-Based Access Control](./06-RBAC): in deze stap gaan we gebruikers rollen toekennen en rechten toekennen op
   basis van rollen.
-- [Stap 7: Method Security]()
-- Meer complexe authz (eigen wachtwoord aanpassen)
-- Rehash van wachtwoord gaat pas als we H2 console terug toegankelijk hebben gemaakt
+- [Stap 7: Method Security](./07-EnableMethodSecurity): in deze stap brengen we de autorisatie regels dichter bij de
+  endpoints in controllers in de plaats van die te specificeren in een `SecurityFilterChain`.
+- [Stap 8: Geavanceerde autorisatie](./08-AdvancedAuthorization): in deze stap zien we hoe we meer complexe autorisatie
+  kunnen doen, o.a. op basis van `principal` of `@AuthenticationPrincipal`.
+- [Stap 9: HTTP integratietests fixen](./09-FixIntegrationTests): we kunnen onze HTTP integratietests fixen door
+  onze gebruikers te mocken.
