@@ -1,4 +1,4 @@
-# Geavanceerde authorisatie
+# Geavanceerde autorisatie
 
 ## Wat gaan we doen?
 
