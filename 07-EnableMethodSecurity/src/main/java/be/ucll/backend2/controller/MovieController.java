@@ -4,6 +4,7 @@ import be.ucll.backend2.controller.dto.CreateMovieDto;
 import be.ucll.backend2.model.Movie;
 import be.ucll.backend2.service.MovieService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class MovieController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('EDITOR')")
     public Movie createMovie(@RequestBody CreateMovieDto movie) {
         return movieService.createMovie(movie);
     }
