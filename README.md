@@ -8,4 +8,8 @@ en voegen we stap voor stap security toe.
 - [Stap 2: InMemoryUserDetailsManager](./02-InMemoryUserDetailsManager): in deze stap voegen we onze eigen gebruikers toe (in-memory).
 - [Stap 3: UserDetails in database opslaan](./03-UserDetailsInDatabase): in deze stap slaan we onze gebruikers op in de database.
 - [Stap 4: SecurityFilterChain](./04-SecurityFilterChain): in deze stap zorgen we ervoor dat `POST`, `PUT` en `DELETE` requests terug werken.
-- ...
+- [Stap 5: Registratie](./05-Registratie): in deze stap gaan we het mogelijk maken voor users om zich te registreren.
+- RBAC
+- Method security (`@PreAuthorize`)
+- Rehash van wachtwoord gaat pas als we H2 console terug toegankelijk hebben gemaakt
+- Meer complexe authz (eigen wachtwoord aanpassen)
