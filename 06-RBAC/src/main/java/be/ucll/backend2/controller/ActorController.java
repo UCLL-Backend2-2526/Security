@@ -22,7 +22,6 @@ public class ActorController {
     }
 
     @GetMapping
-    @PreAuthorize("true")
     public List<Actor> getAllActors() {
         return actorService.getAllActors();
     }
