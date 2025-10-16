@@ -9,7 +9,8 @@ en voegen we stap voor stap security toe.
 - [Stap 3: UserDetails in database opslaan](./03-UserDetailsInDatabase): in deze stap slaan we onze gebruikers op in de database.
 - [Stap 4: SecurityFilterChain](./04-SecurityFilterChain): in deze stap zorgen we ervoor dat `POST`, `PUT` en `DELETE` requests terug werken.
 - [Stap 5: Registratie](./05-Registratie): in deze stap gaan we het mogelijk maken voor users om zich te registreren.
-- RBAC
-- Method security (`@PreAuthorize`)
+- [Stap 6: Role-Based Access Control](./06-RBAC): in deze stap gaan we gebruikers rollen toekennen en rechten toekennen op
+  basis van rollen.
+- [Stap 7: Method Security]()
 - Rehash van wachtwoord gaat pas als we H2 console terug toegankelijk hebben gemaakt
 - Meer complexe authz (eigen wachtwoord aanpassen)
