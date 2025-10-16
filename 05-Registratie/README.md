@@ -52,7 +52,7 @@ We moeten er nu voor zorgen dat iedereen zich kan registreren: `POST /api/v1/use
 voor iedereen toegankelijk zijn. Hiervoor moeten we onze `SecurityFilterChain` aanpassen:
 we veranderen de `authorizeHttpRequests` naar:
 
-```java
+```
 .authorizeHttpRequests(
         authorizeRequests ->
             authorizeRequests
