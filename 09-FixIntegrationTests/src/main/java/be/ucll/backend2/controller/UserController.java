@@ -6,6 +6,7 @@ import be.ucll.backend2.exception.UserNotFoundException;
 import be.ucll.backend2.model.User;
 import be.ucll.backend2.model.UserDetailsImpl;
 import be.ucll.backend2.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
