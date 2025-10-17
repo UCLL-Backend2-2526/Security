@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Locale;
 
@@ -14,6 +15,7 @@ public class User {
     private Long id;
 
     @Email
+    @NotBlank
     @Column(nullable = false, unique = true)
     private String emailAddress;
 
@@ -22,16 +24,19 @@ public class User {
     @JsonIgnore
     private String hashedPassword;
 
+    @NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    protected User() {}
+    protected User() {
+        setRole(Role.READER);
+    }
 
     public User(String emailAddress, String hashedPassword) {
+        this();
         setEmailAddress(emailAddress);
         setHashedPassword(hashedPassword);
-        setRole(Role.READER);
     }
 
     public void setId(Long id) {

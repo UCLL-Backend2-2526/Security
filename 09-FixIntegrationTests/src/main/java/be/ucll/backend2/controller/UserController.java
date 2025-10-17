@@ -31,13 +31,13 @@ public class UserController {
     }
 
     @PostMapping
-    public User registerUser(@RequestBody UserDto userDto) throws EmailAddressNotUniqueException {
+    public User registerUser(@Valid @RequestBody UserDto userDto) throws EmailAddressNotUniqueException {
         return userService.registerUser(userDto);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("principal.user().id == #id")
-    public User updateUser(@PathVariable long id, @RequestBody UserDto userDto) throws UserNotFoundException, EmailAddressNotUniqueException {
+    public User updateUser(@PathVariable long id, @Valid @RequestBody UserDto userDto) throws UserNotFoundException, EmailAddressNotUniqueException {
         return userService.updateUser(id, userDto);
     }
 
@@ -45,7 +45,7 @@ public class UserController {
     public ResponseEntity<Map<String,String>> handleEmailAddressNotUniqueException(EmailAddressNotUniqueException e) {
         Map<String, String> map = new HashMap<>();
         map.put("message", e.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(map);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(map);
     }
 
     @ExceptionHandler(UserNotFoundException.class)

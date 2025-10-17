@@ -4,12 +4,10 @@ import be.ucll.backend2.controller.dto.UserDto;
 import be.ucll.backend2.exception.EmailAddressNotUniqueException;
 import be.ucll.backend2.exception.UserNotFoundException;
 import be.ucll.backend2.model.User;
-import be.ucll.backend2.model.UserDetailsImpl;
 import be.ucll.backend2.repository.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class UserService {
@@ -25,7 +23,7 @@ public class UserService {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    public User registerUser(@RequestBody UserDto userDto) throws EmailAddressNotUniqueException {
+    public User registerUser(UserDto userDto) throws EmailAddressNotUniqueException {
         final var hashedPassword = passwordEncoder.encode(userDto.password());
         final var user = new User(
                 userDto.emailAddress(),

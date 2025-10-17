@@ -20,6 +20,7 @@ public class MovieController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('READER')")
     public List<Movie> getMovies(@RequestParam Optional<Integer> startYear,
                                  @RequestParam Optional<Integer> endYear) {
         if (startYear.isPresent() || endYear.isPresent()) {

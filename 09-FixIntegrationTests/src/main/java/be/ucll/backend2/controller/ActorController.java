@@ -22,11 +22,13 @@ public class ActorController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('READER')")
     public List<Actor> getAllActors() {
         return actorService.getAllActors();
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('READER')")
     public Actor getActorById(@PathVariable long id) throws ActorNotFoundException {
         return actorService.getActorById(id);
     }
