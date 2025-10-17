@@ -20,6 +20,7 @@ public class SecurityConfig {
                         authorizeRequests ->
                                 authorizeRequests
                                         .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+                                        .requestMatchers("/error").permitAll()
                                         .anyRequest().authenticated()
                 )
                 .build();
