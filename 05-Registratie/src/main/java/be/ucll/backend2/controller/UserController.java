@@ -30,6 +30,6 @@ public class UserController {
     public ResponseEntity<Map<String,String>> handleEmailAddressNotUniqueException(EmailAddressNotUniqueException e) {
         Map<String, String> map = new HashMap<>();
         map.put("message", e.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(map);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(map);
     }
 }
