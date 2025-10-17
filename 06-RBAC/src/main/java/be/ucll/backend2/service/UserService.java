@@ -7,7 +7,6 @@ import be.ucll.backend2.repository.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class UserService {
@@ -19,7 +18,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User registerUser(@RequestBody CreateUserDto createUserDto) throws EmailAddressNotUniqueException {
+    public User registerUser(CreateUserDto createUserDto) throws EmailAddressNotUniqueException {
         final var hashedPassword = passwordEncoder.encode(createUserDto.password());
         final var user = new User(
                 createUserDto.emailAddress(),

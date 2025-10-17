@@ -20,10 +20,9 @@ public class SecurityConfig {
                         authorizeRequests ->
                                 authorizeRequests
                                         .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-                                        .requestMatchers(HttpMethod.POST).hasRole("EDITOR")
-                                        .requestMatchers(HttpMethod.PUT).hasRole("EDITOR")
-                                        .requestMatchers(HttpMethod.DELETE).hasRole("EDITOR")
-                                        .anyRequest().authenticated()
+                                        .requestMatchers("/error").permitAll()
+                                        .requestMatchers(HttpMethod.GET).hasRole("READER")
+                                        .anyRequest().hasRole("EDITOR")
                 )
                 .build();
     }

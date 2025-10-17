@@ -4,6 +4,7 @@ import be.ucll.backend2.controller.dto.CreateUserDto;
 import be.ucll.backend2.exception.EmailAddressNotUniqueException;
 import be.ucll.backend2.model.User;
 import be.ucll.backend2.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping
-    public User registerUser(@RequestBody CreateUserDto createUserDto) throws EmailAddressNotUniqueException {
+    public User registerUser(@Valid @RequestBody CreateUserDto createUserDto) throws EmailAddressNotUniqueException {
         return userService.registerUser(createUserDto);
     }
 
@@ -29,6 +30,6 @@ public class UserController {
     public ResponseEntity<Map<String,String>> handleEmailAddressNotUniqueException(EmailAddressNotUniqueException e) {
         Map<String, String> map = new HashMap<>();
         map.put("message", e.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(map);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(map);
     }
 }
