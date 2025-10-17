@@ -13,6 +13,7 @@ public class User {
     private Long id;
 
     @Email
+    @NotBlank
     @Column(nullable = false, unique = true)
     private String emailAddress;
 
