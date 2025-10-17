@@ -4,6 +4,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public record CreateUserDto(
-        @Email String emailAddress,
+        @Email @NotBlank String emailAddress,
         @NotBlank String password) {
 }
