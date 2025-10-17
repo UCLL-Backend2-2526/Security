@@ -32,7 +32,7 @@ duidelijk te maken dat dit over een gehasht wachtwoord gaat.
 We voegen ook de bijhorende SQL-code toe aan [`schema.sql`](./src/main/resources/schema.sql) en
 voegen een testgebruiker toe via [`data.sql`](./src/main/resources/data.sql).
 
-Ook voegen we gepaste validatie toe: `@Email` voor het e-mailadres en `@NotBlank` voor `hashedPassword`.
+Ook voegen we gepaste validatie toe: `@Email` en `@NotBlank` voor het e-mailadres en `@NotBlank` voor `hashedPassword`.
 
 De volgende optie zorgt ervoor dat we geen problemen krijgen met de tabelnaam `user`, wat normaal een *reserved keyword*
 is:
