@@ -17,5 +17,16 @@ en voegen we stap voor stap security toe.
   kunnen doen, o.a. op basis van `principal` of `@AuthenticationPrincipal`.
 - [Stap 9: HTTP integratietests fixen](./09-FixIntegrationTests): we kunnen onze HTTP integratietests fixen door
   onze gebruikers te mocken.
-- [Stap 10: Fix H2 Console](./10-FixH2Console): tot nu toe heeft de H2 console niet meer gewerkt. In deze stap doen
+- [Stap 10: HTTP integratietest met geavanceerde autorisatie](./10-IntegrationTestWithAdvancedAuth): in de vorige stap
+  hebben we simpelweg `@WithMockUser` gebruikt. Wat als het niet zo eenvoudig kan?
+- [Stap 11: Fix H2 Console](./11-FixH2Console): tot nu toe heeft de H2 console niet meer gewerkt. In deze stap doen
   we daar iets aan.
+
+<!--
+Automatische wachtwoord updates
+JWT:
+  - keys genereren
+  - properties
+Login functionaliteit
+Swagger UI
+-->
