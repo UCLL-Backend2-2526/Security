@@ -22,6 +22,7 @@ en voegen we stap voor stap security toe.
 - [Stap 11: Fix H2 Console](./11-FixH2Console): tot nu toe heeft de H2 console niet meer gewerkt. In deze stap doen
   we daar iets aan.
 - [Stap 12: Automatische wachtwoord updates](./12-PasswordUpdates): ...
+- JWT auth
 
 <!--
 Automatische wachtwoord updates
