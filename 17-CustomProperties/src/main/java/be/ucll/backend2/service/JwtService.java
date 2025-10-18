@@ -1,5 +1,6 @@
 package be.ucll.backend2.service;
 
+import be.ucll.backend2.config.JwtProperties;
 import be.ucll.backend2.model.UserDetailsImpl;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.JwsHeader;
@@ -9,25 +10,24 @@ import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 
 @Service
 public class JwtService {
     private final JwtEncoder jwtEncoder;
+    private final JwtProperties jwtProperties;
 
-    public JwtService(JwtEncoder jwtEncoder) {
+    public JwtService(JwtEncoder jwtEncoder, JwtProperties jwtProperties) {
         this.jwtEncoder = jwtEncoder;
+        this.jwtProperties = jwtProperties;
     }
 
     public String generateToken(long id, String emailAddress, Collection<String> roles) {
         final var now = Instant.now();
-        // TODO: set expiresAt via property
-        final var expiresAt = now.plus(30L, ChronoUnit.MINUTES);
+        final var expiresAt = now.plus(jwtProperties.token().lifetime());
         final var header = JwsHeader.with(MacAlgorithm.HS256).build();
         final var claims = JwtClaimsSet.builder()
-                // TODO: set issuer via property
-                .issuer("self")
+                .issuer(jwtProperties.token().issuer())
                 .issuedAt(now)
                 .expiresAt(expiresAt)
                 .subject(String.valueOf(id))

@@ -36,7 +36,7 @@ import static org.springframework.boot.autoconfigure.security.servlet.PathReques
 
 @Configuration
 @EnableMethodSecurity
-@EnableConfigurationProperties(H2ConsoleProperties.class)
+@EnableConfigurationProperties({JwtProperties.class, H2ConsoleProperties.class})
 public class SecurityConfig {
     @Bean
     @Order(0)
@@ -78,9 +78,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecretKey secretKey() {
-        // TODO: set secret via property
-        final var secretBytes = Base64.getUrlDecoder().decode("idrnjzRAHEdRcoaENH6KjPL4Z1oQFKeCMiL2snW0QRE");
+    public SecretKey secretKey(JwtProperties jwtProperties) {
+        final var secretBytes = Base64.getUrlDecoder().decode(jwtProperties.secretKey());
         return new SecretKeySpec(secretBytes, "HmacSHA256");
     }
 
