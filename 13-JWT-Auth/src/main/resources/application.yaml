@@ -27,6 +27,11 @@ spring:
     init:
       # Gebruik altijd schema.sql
       mode: always
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          authority-prefix: ""
 logging:
   level:
     # Gebruik debug logging voor Spring Security
