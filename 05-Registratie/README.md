@@ -78,4 +78,5 @@ Nu zou registratie moeten lukken.
 
 ## Volgende stappen
 
-...
+- Momenteel kan elke ingelogde gebruiker alles doen. In de volgende stap gaan we ervoor zorgen dat gebruikers andere
+  dingen kunnen doen afhankelijk van hun rol.
