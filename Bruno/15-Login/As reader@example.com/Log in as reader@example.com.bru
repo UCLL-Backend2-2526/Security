@@ -1,0 +1,27 @@
+meta {
+  name: Log in as reader@example.com
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{host}}/api/v1/sessions
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "emailAddress": "reader@example.com",
+    "password": "reader"
+  }
+}
+
+script:post-response {
+  bru.setVar('reader_jwt', res.getBody().token);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,58 @@
+meta {
+  name: 14-FixAdvancedAuth
+  seq: 11
+}
+
+auth {
+  mode: inherit
+}
+
+vars:pre-request {
+  password: 25c5db3d-59e0-4be3-b0d0-bdcbf17ae3ed
+  editor_jwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJlZGl0b3JAZXhhbXBsZS5jb20iLCJzY29wZSI6IlJPTEVfUkVBREVSIFJPTEVfRURJVE9SIiwiaWF0IjoxNTE2MjM5MDIyfQ.Y7XVVZnS21nxdfLbnp3a38Z93UwFf_omH6TbZYKE4bQ
+  reader_jwt: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwiZW1haWwiOiJyZWFkZXJAZXhhbXBsZS5jb20iLCJzY29wZSI6IlJPTEVfUkVBREVSIiwiaWF0IjoxNTE2MjM5MDIyfQ.iCsvLnAMZGIln7t0CHs3kioRnA1iHSsJiyAPqBsssFs
+}
+
+docs {
+  # Geavanceerde autorisatie aanpassen aan JWT
+  
+  In deze stap zal je merken dat de endpoints van `UserController` wél werken.
+  
+  We maken nog steeds gebruik van JWT via Bearer tokens. Je zal de token moeten aanmaken via https://jwt.io met als secret key:
+  
+  ```
+  idrnjzRAHEdRcoaENH6KjPL4Z1oQFKeCMiL2snW0QRE
+  ```
+  
+  Gebruik base64url als encoding format.
+  
+  ## Editor token
+  
+  Een editor token maak je met de volgende payload:
+  
+  ```
+  {
+    "sub": "1",
+    "email": "editor@example.com",
+    "iat": ...,
+    "scope": "ROLE_READER ROLE_EDITOR"
+  }
+  ```
+  
+  De `iat` laat je staan op de automatisch gegenereerde waarde.
+  
+  ## Reader token
+  
+  De reader token maak je met de volgende payload:
+  
+  ```
+  {
+    "sub": "2",
+    "email": "reader@example.com",
+    "iat": ...,
+    "scope": "ROLE_READER"
+  }
+  ```
+  
+  De `iat` laat je staan op de automatisch gegenereerde waarde.
+}

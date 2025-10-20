@@ -1,0 +1,16 @@
+meta {
+  name: Get all actors
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/api/v1/actors
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

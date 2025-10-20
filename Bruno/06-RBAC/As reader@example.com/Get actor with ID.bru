@@ -1,0 +1,20 @@
+meta {
+  name: Get actor with ID
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{host}}/api/v1/actors/:actor_id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  actor_id: {{actor_id}}
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,23 @@
+meta {
+  name: Create new user
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{host}}/api/v1/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "emailAddress": "reader@example.com",
+    "password": "reader"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

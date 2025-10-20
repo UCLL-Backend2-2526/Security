@@ -1,0 +1,12 @@
+meta {
+  name: As reader@example.com
+  seq: 2
+}
+
+auth {
+  mode: bearer
+}
+
+auth:bearer {
+  token: {{reader_jwt}}
+}

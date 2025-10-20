@@ -1,0 +1,24 @@
+meta {
+  name: Create new movie
+  type: http
+  seq: 13
+}
+
+post {
+  url: {{host}}/api/v1/movies
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "title": "Caught Stealing",
+      "director": "Darren Aronofsky",
+      "year": 2025
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

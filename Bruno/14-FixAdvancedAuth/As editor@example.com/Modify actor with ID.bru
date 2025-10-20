@@ -1,0 +1,26 @@
+meta {
+  name: Modify actor with ID
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{host}}/api/v1/actors/:actor_id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  actor_id: {{actor_id}}
+}
+
+body:json {
+  {
+      "name": "Clement Peerens"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

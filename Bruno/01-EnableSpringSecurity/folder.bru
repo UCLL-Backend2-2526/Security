@@ -1,0 +1,17 @@
+meta {
+  name: 01-EnableSpringSecurity
+  seq: 3
+}
+
+auth {
+  mode: basic
+}
+
+auth:basic {
+  username: user
+  password: {{password}}
+}
+
+vars:pre-request {
+  password: 
+}

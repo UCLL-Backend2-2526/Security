@@ -1,0 +1,27 @@
+meta {
+  name: Update other user's details (ID 2)
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{host}}/api/v1/users/:user_id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  user_id: 2
+}
+
+body:json {
+  {
+    "emailAddress": "changedreader@example.com",
+    "password": "changedpassword"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

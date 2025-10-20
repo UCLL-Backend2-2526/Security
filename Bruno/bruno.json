@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Backend 2 - Spring Security",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

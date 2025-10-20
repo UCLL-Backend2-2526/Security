@@ -1,0 +1,26 @@
+meta {
+  name: Create new actor
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{host}}/api/v1/actors
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "name": "Jos Bosmans"
+  }
+}
+
+script:post-response {
+  bru.setVar("actor_id", res.getBody().id);
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
