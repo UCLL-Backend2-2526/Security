@@ -8,21 +8,23 @@ import be.ucll.backend2.service.ActorService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.json.JsonCompareMode;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 import java.util.List;
 
 @WebMvcTest(ActorController.class)
 @Import(SecurityConfig.class)
+@AutoConfigureRestTestClient
 public class ActorControllerTest {
 
     @Autowired
-    private WebTestClient client;
+    private RestTestClient client;
 
     @MockitoBean
     private ActorService actorService;

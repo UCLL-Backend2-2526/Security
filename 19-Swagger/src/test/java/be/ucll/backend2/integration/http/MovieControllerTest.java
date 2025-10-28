@@ -8,18 +8,20 @@ import be.ucll.backend2.service.MovieService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.json.JsonCompareMode;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.test.web.servlet.client.RestTestClient;
 
 @WebMvcTest(MovieController.class)
 @Import(SecurityConfig.class)
+@AutoConfigureRestTestClient
 public class MovieControllerTest {
     @Autowired
-    private WebTestClient client;
+    private RestTestClient client;
 
     @MockitoBean
     private MovieService movieService;
@@ -43,19 +45,18 @@ public class MovieControllerTest {
         Mockito.when(movieService.createMovie(createMovieDto)).thenReturn(movie);
 
         client.post()
-                .uri("/api/v1/movies")
-//                .header("Content-Type", "application/json")
-                .bodyValue(createMovieDto)
-                .exchange()
-                .expectStatus().isCreated()
-                .expectBody().json("""
-                        {
-                          "id": 1,
-                          "title": "Cars",
-                          "director": "John Lasseter",
-                          "year": 2006,
-                          "actors": []
-                        }
-                        """, JsonCompareMode.STRICT);
+            .uri("/api/v1/movies")
+            .body(createMovieDto)
+            .exchange()
+            .expectStatus().isCreated()
+            .expectBody().json("""
+                {
+                  "id": 1,
+                  "title": "Cars",
+                  "director": "John Lasseter",
+                  "year": 2006,
+                  "actors": []
+                }
+                """, JsonCompareMode.STRICT);
     }
 }
