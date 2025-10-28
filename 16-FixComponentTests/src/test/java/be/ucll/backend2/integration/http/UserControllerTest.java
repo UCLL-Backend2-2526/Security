@@ -34,7 +34,7 @@ public class UserControllerTest {
     @MockitoBean
     private UserService userService;
 
-    private static JwtAuthenticationToken createToken(long id, String emailAddress, Collection<String> roles) {
+    private static void logInAsUser(long id, String emailAddress, Collection<String> roles) {
         final var jwt = new Jwt(
                 "mock-token",
                 Instant.now(),
@@ -47,13 +47,13 @@ public class UserControllerTest {
                 )
         );
         final var authorities = roles.stream().map(role -> new SimpleGrantedAuthority(role)).toList();
-        return new JwtAuthenticationToken(jwt, authorities);
+        final var token = new JwtAuthenticationToken(jwt, authorities);
+        SecurityContextHolder.getContext().setAuthentication(token);
     }
 
     @Test
     public void givenUserWithGivenIdExists_whenUpdateUserIsCalled_thenUserIsUpdated() throws UserNotFoundException, EmailAddressNotUniqueException {
-        final var token = createToken(1L, "jef@example.com", List.of("READER"));
-        SecurityContextHolder.getContext().setAuthentication(token);
+        logInAsUser(1L, "jos@example.com", List.of("ROLE_READER"));
 
         final var userDto = new UserDto(
                 "jos@example.com",

@@ -5,6 +5,7 @@ import be.ucll.backend2.controller.UserController;
 import be.ucll.backend2.controller.dto.UserDto;
 import be.ucll.backend2.exception.EmailAddressNotUniqueException;
 import be.ucll.backend2.exception.UserNotFoundException;
+import be.ucll.backend2.model.Role;
 import be.ucll.backend2.model.User;
 import be.ucll.backend2.model.UserDetailsImpl;
 import be.ucll.backend2.service.UserService;
@@ -15,7 +16,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.json.JsonCompareMode;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -29,17 +29,18 @@ public class UserControllerTest {
     @MockitoBean
     private UserService userService;
 
-    private static UserDetails createUserDetails(long id, String emailAddress, String hashedPassword) {
-        final var user = new User(emailAddress, hashedPassword);
+    private static void logInAsUser(long id, String emailAddress, Role role) {
+        final var user = new User(emailAddress, "{noop}password");
         user.setId(id);
-        return new UserDetailsImpl(user);
+        user.setRole(role);
+        final var userDetails = new UserDetailsImpl(user);
+        final var authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
     @Test
     public void givenUserWithGivenIdExists_whenUpdateUserIsCalled_thenUserIsUpdated() throws UserNotFoundException, EmailAddressNotUniqueException {
-        final var userDetails = createUserDetails(1L, "jef@example.com", "{noop}pass");
-        final var auth = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(auth);
+        logInAsUser(1L, "jos@example.com", Role.READER);
 
         final var userDto = new UserDto(
                 "jos@example.com",
