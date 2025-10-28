@@ -61,7 +61,7 @@ public class UserControllerTest {
         );
         final var updatedUser = new User(
                 "jos@example.com",
-                "password"
+                "{noop}password"
         );
         updatedUser.setId(1L);
 
