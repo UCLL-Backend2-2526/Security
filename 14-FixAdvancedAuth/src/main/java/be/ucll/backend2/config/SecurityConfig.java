@@ -2,6 +2,7 @@ package be.ucll.backend2.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.boot.autoconfigure.h2.H2ConsoleProperties;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,23 +24,20 @@ import javax.crypto.spec.SecretKeySpec;
 
 import java.util.Base64;
 
-import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
-
 @Configuration
 @EnableMethodSecurity
 @EnableConfigurationProperties(H2ConsoleProperties.class)
 public class SecurityConfig {
+    // Source: https://docs.spring.io/spring-boot/reference/data/sql.html#data.sql.h2-web-console.spring-security
     @Bean
     @Order(0)
     @ConditionalOnBooleanProperty(prefix = "spring.h2.console", name = "enabled")
     public SecurityFilterChain h2SecurityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .securityMatcher(toH2Console())
+                .securityMatcher(PathRequest.toH2Console())
                 .csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()))
-                .authorizeHttpRequests(
-                        authorizeRequests -> authorizeRequests.anyRequest().permitAll()
-                )
+                .headers(headers ->
+                    headers.frameOptions(frameOptionsConfig -> frameOptionsConfig.sameOrigin()))
                 .build();
     }
 
@@ -69,7 +67,7 @@ public class SecurityConfig {
 
     @Bean
     public SecretKey secretKey() {
-        // Hardcoded secret FOR NOW
+        // TODO: set secret via property
         final var secretBytes = Base64.getUrlDecoder().decode("idrnjzRAHEdRcoaENH6KjPL4Z1oQFKeCMiL2snW0QRE");
         return new SecretKeySpec(secretBytes, "HmacSHA256");
     }
