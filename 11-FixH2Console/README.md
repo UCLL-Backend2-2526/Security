@@ -22,7 +22,7 @@ maken om een specifieke `SecurityFilterChain` te maken
 enkel voor de H2 Console.
 
 We baseren hier ons op de officiële documentatie van Spring Data:
-https://docs.spring.io/spring-boot/reference/data/sql.html#data.sql.h2-web-console.spring-security
+https://docs.spring.io/spring-boot/3.5/reference/data/sql.html#data.sql.h2-web-console.spring-security
 
 De resulterende `SecurityFilterChain` ziet er als volgt uit:
 

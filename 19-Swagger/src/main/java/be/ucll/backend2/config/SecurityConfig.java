@@ -42,7 +42,7 @@ import java.util.Base64;
 public class SecurityConfig {
     private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
-    // Source: https://docs.spring.io/spring-boot/reference/data/sql.html#data.sql.h2-web-console.spring-security
+    // Source: https://docs.spring.io/spring-boot/3.5/reference/data/sql.html#data.sql.h2-web-console.spring-security
     @Bean
     @Order(0)
     @ConditionalOnBooleanProperty(prefix = "spring.h2.console", name = "enabled")

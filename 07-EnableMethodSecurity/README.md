@@ -41,10 +41,10 @@ public class SecurityConfig {
 We kunnen nu met behulp van de `@PreAuthorize` annotatie checks toevoegen voordat een methode wordt uitgevoerd.
 `@PostAuthorize` kan je gebruiken in de zeldzame gevallen waarbij je achteraf deze check wil uitvoeren.
 
-[Meer informatie over deze annotaties vind je hier.](https://docs.spring.io/spring-security/reference/servlet/authorization/method-security.html)
+[Meer informatie over deze annotaties vind je hier.](https://docs.spring.io/spring-security/reference/6.5/servlet/authorization/method-security.html)
 
 De checks die je hierin uitvoert moeten worden geschreven in de
-[Spring Expression Language (SpEL)](https://docs.spring.io/spring-framework/reference/core/expressions.html).
+[Spring Expression Language (SpEL)](https://docs.spring.io/spring-framework/reference/6.2/core/expressions.html).
 
 Voorlopig houden we het op de volgende simpele expressies:
 

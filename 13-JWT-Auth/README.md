@@ -134,7 +134,7 @@ public SecretKey secretKey() {
 ### 3. Extra dependency
 
 Nu willen we Spring Security gaan instellen om JWTs te accepteren. Hiervoor gaan we gebruik maken
-van [Spring OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html). Daarvoor voegen we het volgende toe aan onze dependencies in [pom.xml](pom.xml):
+van [Spring OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/6.5/servlet/oauth2/resource-server/index.html). Daarvoor voegen we het volgende toe aan onze dependencies in [pom.xml](pom.xml):
 
 ```xml
 <dependency>

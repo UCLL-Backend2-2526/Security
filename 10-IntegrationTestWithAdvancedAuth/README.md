@@ -88,7 +88,7 @@ een instantie van `be.ucll.backend2.model.UserDetailsImpl`.
 ### 2. Principal instellen als een `UserDetailsImpl`
 
 We kunnen een eigen annotatie maken met behulp van
-[@WithSecurityContext](https://docs.spring.io/spring-security/reference/servlet/test/method.html#test-method-withsecuritycontext).
+[@WithSecurityContext](https://docs.spring.io/spring-security/reference/6.5/servlet/test/method.html#test-method-withsecuritycontext).
 We gaan het nu echter nog relatief eenvoudig houden door gewoon een hulpmethode te schrijven die een `UserDetailsImpl` aanmaakt
 en deze instelt als de ingelogde gebruiker:
 

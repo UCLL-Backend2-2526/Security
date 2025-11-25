@@ -10,11 +10,11 @@ In de vorige stap zagen we het volgende logbericht:
 
 Laten we dit bericht ontleden:
 
-- [AuthenticationManager](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/authentication/AuthenticationManager.html): dit is een interface met één methode: `authenticate`. De `AuthenticationManager` zorgt dus voor de authenticatie.
-- [UserDetailsService](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetailsService.html): dit is een interface met één methode:
+- [AuthenticationManager](https://docs.spring.io/spring-security/reference/6.5/api/java/org/springframework/security/authentication/AuthenticationManager.html): dit is een interface met één methode: `authenticate`. De `AuthenticationManager` zorgt dus voor de authenticatie.
+- [UserDetailsService](https://docs.spring.io/spring-security/reference/6.5/api/java/org/springframework/security/core/userdetails/UserDetailsService.html): dit is een interface met één methode:
   `loadUserByUsername`. De `UserDetailsService` zorgt dus voor het ophalen van
   gebruikersinformatie.
-- [inMemoryUserDetailsManager](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/provisioning/InMemoryUserDetailsManager.html): dit is een concrete implementatie van de
+- [inMemoryUserDetailsManager](https://docs.spring.io/spring-security/reference/6.5/api/java/org/springframework/security/provisioning/InMemoryUserDetailsManager.html): dit is een concrete implementatie van de
   `UserDetailsService` interface. Gebruikersgegevens worden "in memory" bewaard
   (en dus niet bijvoorbeeld uit de database gehaald).
 

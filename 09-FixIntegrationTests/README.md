@@ -49,7 +49,7 @@ worden dus niet gebruikt.
 die hebben we niet. We gaan gewoon doen alsof een bepaalde gebruiker is ingelogd.
 
 We gaan we de `SecurityConfig` inschakelen. Dit kunnen we doen met de
-[`@Import`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Import.html) annotatie. We voegen het volgende
+[`@Import`](https://docs.spring.io/spring-framework/docs/6.2.14/javadoc-api/org/springframework/context/annotation/Import.html) annotatie. We voegen het volgende
 toe bovenaan
 [`ActorControllerTest`](./src/test/java/be/ucll/backend2/integration/http/ActorControllerTest.java):
 
@@ -90,7 +90,7 @@ gebruiker ingelogd is. We gaan dus voor we een test runnen de context aanpassen
 met een bepaalde ingelogde gebruiker.
 
 Dit kunnen we doen met de
-[`@WithMockUser`](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/test/context/support/WithMockUser.html) annotatie.
+[`@WithMockUser`](https://docs.spring.io/spring-security/reference/6.5/api/java/org/springframework/security/test/context/support/WithMockUser.html) annotatie.
 Hiermee kunnen we verschillende eigenschappen instellen van de huidig ingelogde
 gebruiker, o.a. `username` en `roles`. Bijvoorbeeld:
 
