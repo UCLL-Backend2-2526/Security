@@ -24,7 +24,10 @@ public class JwtService {
         final var now = Instant.now();
         // TODO: set expiresAt via property
         final var expiresAt = now.plus(30L, ChronoUnit.MINUTES);
-        final var header = JwsHeader.with(MacAlgorithm.HS256).build();
+        final var header = JwsHeader
+            .with(MacAlgorithm.HS256)
+            .type("JWT")
+            .build();
         final var claims = JwtClaimsSet.builder()
                 // TODO: set issuer via property
                 .issuer("self")

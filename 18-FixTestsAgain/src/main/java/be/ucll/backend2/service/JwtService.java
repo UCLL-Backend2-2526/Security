@@ -25,7 +25,10 @@ public class JwtService {
     public String generateToken(long id, String emailAddress, Collection<String> roles) {
         final var now = Instant.now();
         final var expiresAt = now.plus(jwtProperties.token().lifetime());
-        final var header = JwsHeader.with(MacAlgorithm.HS256).build();
+        final var header = JwsHeader
+            .with(MacAlgorithm.HS256)
+            .type("JWT")
+            .build();
         final var claims = JwtClaimsSet.builder()
                 .issuer(jwtProperties.token().issuer())
                 .issuedAt(now)
